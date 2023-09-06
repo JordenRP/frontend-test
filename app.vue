@@ -101,7 +101,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
     data() {
       return {
-        email: "pavel@gmail.com",
+        email: "p.gritsatsuev.css@gmail.com",
         code: "1234",
         emailErrorMessages: "",
         codeErrorMessages: "",
@@ -142,14 +142,33 @@ export default defineComponent({
       },
       registration() {
         if(this.validate(this.email)) {
-          this.switchElement(false);
+          this.sendEmail();
 
           return;
         }
 
         this.switchElement(true);
       },
+      sendEmail() {
+        this.$api.post('/mailing', {
+            'mail': this.email
+        }).then(() => {
+          this.switchElement(false);
+        }).catch(error => {
+            this.emailErrorMessages = error.message;
+        })
+      },
       sendCode() {
+        this.$api.post('/checkCode', {
+          'mail': this.email,
+          'code': this.code,
+        }).then(() => {
+          this.finishReg();
+        }).catch(error => {
+          this.codeErrorMessages = error.message;
+        })
+      },
+      finishReg() {
         if(this.validateCode(this.code)) {
           const emailField = this.$el.querySelector('.container_email_field');
           const codeField = this.$el.querySelector('.container_code_field');

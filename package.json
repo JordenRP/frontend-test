@@ -16,6 +16,7 @@
     "sass": "^1.66.1"
   },
   "dependencies": {
+    "@nuxt/kit": "^3.7.1",
     "vite-plugin-vuetify": "^1.0.2",
     "vuetify": "^3.3.15"
   }
