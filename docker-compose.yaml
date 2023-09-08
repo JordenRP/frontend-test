@@ -3,9 +3,8 @@ version: '3.9'
 services:
   nuxt:
     build:
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/node/Dockerfile
       context: .
-    image: nuxt_dev
-    container_name: nuxt_dev
+    container_name: nuxt
     ports:
       - "3000:3000"

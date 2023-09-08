@@ -101,8 +101,8 @@ import { defineComponent } from 'vue'
 export default defineComponent({
     data() {
       return {
-        email: "p.gritsatsuev.css@gmail.com",
-        code: "1234",
+        email: "",
+        code: "",
         emailErrorMessages: "",
         codeErrorMessages: "",
       }

@@ -2,7 +2,7 @@ FROM node:20.5.1-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY .. .
 
 RUN apk update && apk upgrade
 RUN apk add git curl bash
